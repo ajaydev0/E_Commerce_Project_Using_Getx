@@ -1,11 +1,14 @@
-import 'package:demo/app/modules/auth/sign_up/views/sign_up_view.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../router/app_pages.dart';
 
 class SignInController extends GetxController {
   // Go to Sign Up Screen
   signUpGo() {
-    Get.to(() => const SignUpView());
+    Get.toNamed(Routes.signUpScreen);
   }
 
   //Key
