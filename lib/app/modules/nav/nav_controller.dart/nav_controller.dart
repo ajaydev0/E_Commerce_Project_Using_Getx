@@ -1,20 +1,21 @@
-import 'package:demo/Widgets/Container_Widget.dart';
-import 'package:flutter/material.dart';
+import 'package:demo/app/modules/cart/views/cart_view.dart';
+import 'package:demo/app/modules/discover/views/discover_view.dart';
+import 'package:demo/app/modules/favorite/views/favorite_view.dart';
+import 'package:demo/app/modules/home/views/home_view.dart';
+import 'package:demo/app/modules/profile/views/profile_view.dart';
 import 'package:get/get.dart';
 
 class NavController extends GetxController {
-  int selectIndex = 0;
+  RxInt selectIndex = 0.obs;
 
   List pages = [
-    Kcontainer(color: Colors.red),
-    Kcontainer(color: Colors.blue),
-    Kcontainer(color: Colors.green),
-    Kcontainer(color: Colors.yellow),
-    Kcontainer(color: Colors.pink),
-    // MyHomePage(),
-    // Discover_Page(),
-    // Cart_Page(),
-    // Favorite_Page(),
-    // Profile_Page(),
+    const HomeView(),
+    const DiscoverView(),
+    const CartView(),
+    const FavoriteView(),
+    const ProfileView(),
   ];
+  ontap(int index) {
+    selectIndex.value = index;
+  }
 }

@@ -19,7 +19,7 @@ class appcolors {
 }
 
 class image {
-  static const String Profile_Img =
+  static const String Prodile_Img =
       "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400";
   static const String flash_Screen_Img = "assets/images/splash_img.png";
   // static const String HomePage_product_Img1 =

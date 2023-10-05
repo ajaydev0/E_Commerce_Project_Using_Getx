@@ -77,24 +77,42 @@ class SignUpView extends GetView<SignUpController> {
                   // maxLengthEnforcement: MaxLengthEnforcement.none,
                 ),
                 KsBox(h: 10),
-                KtextField(
-                  controller: controller.userPasswordController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  hintText: "Password",
-                  labelText: "Password",
-                  prefixIcon: Icons.password,
-                  suffixIcon: IconButton(
-                    icon: Icon(controller.passwordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility),
-                    onPressed: () {
-                      controller.passwordVisible = !controller.passwordVisible;
-                    },
+                Obx(
+                  () => TextFormField(
+                    obscureText: controller.passwordVisible.value,
+                    controller: controller.userPasswordController,
+                    maxLength: 8,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                      prefixIconColor: appcolors.mainColor,
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          borderSide: BorderSide(color: appcolors.mainColor)),
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      hintText: "Password",
+                      labelText: "Password",
+                      prefixIcon: const Icon(
+                        Icons.password,
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(controller.passwordVisible.value
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          controller.passwordVisible.value =
+                              !controller.passwordVisible.value;
+                        },
+                      ),
+                    ),
                   ),
-                  maxLength: 8,
-                  // maxLengthEnforcement: MaxLengthEnforcement.none,
-                  obscureText: controller.passwordVisible,
                 ),
+
                 KsBox(h: 5),
                 KsBox(
                   h: 40,

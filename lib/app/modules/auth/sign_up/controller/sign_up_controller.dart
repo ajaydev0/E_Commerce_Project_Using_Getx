@@ -8,7 +8,7 @@ class SignUpController extends GetxController {
 
   //Key
   final formKey = GlobalKey<FormState>();
-  bool passwordVisible = true;
+  RxBool passwordVisible = true.obs;
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userPasswordController = TextEditingController();

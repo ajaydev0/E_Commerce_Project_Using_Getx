@@ -8,7 +8,6 @@ import '../../../../../Widgets/SizeBox_Widget.dart';
 import '../../../../../Widgets/TextField_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
 import '../../../../../utils/User_Data.dart';
-import 'widgets/Error_DialogBox.dart';
 import 'widgets/Success_DialogBox.dart';
 
 class SignInView extends GetView<SignInController> {
@@ -77,7 +76,7 @@ class SignInView extends GetView<SignInController> {
                 ),
                 KsBox(h: 10),
                 KtextField(
-                  onChanged: (value) {},
+                  // onChanged: (value) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return " Requied";
@@ -133,28 +132,42 @@ class SignInView extends GetView<SignInController> {
                   tSize: 18,
                   tWeight: FontWeight.bold,
                   onPressed: () {
+                    //initial box
+                    successDialogBox(
+                      context,
+                    );
+//
+                    //
                     //Validation Key
-                    if (controller.formKey.currentState!.validate()) {
-                      if (controller.inputEmail.text == KData.userEmail &&
-                          KData.UserPass == controller.inputPass.text) {
-                        successDialogBox(
-                          context,
-                        );
-                      } else if (KData.userEmail !=
-                              controller.inputEmail.text ||
-                          KData.UserPass != controller.inputPass.text) {
-                        error_DialogBox(context, controller.inputEmail.text,
-                            controller.inputPass.text);
-                      } else {
-                        error_DialogBox(context, controller.inputEmail.text,
-                            controller.inputPass.text);
-                      }
-                    } else if (controller.inputEmail.text == "" ||
-                        controller.inputPass.text == "") {
-                      error_DialogBox(context, controller.inputEmail.text,
-                          controller.inputPass.text);
-                      // error_DialogBox(context,);
-                    }
+                    // if (controller.formKey.currentState!.validate()) {
+                    //   if (controller.inputEmail.text == KData.userEmail &&
+                    //       KData.UserPass == controller.inputPass.text) {
+                    //     successDialogBox(
+                    //       context,
+                    //     );
+                    //   } else if (KData.userEmail !=
+                    //           controller.inputEmail.text ||
+                    //       KData.UserPass != controller.inputPass.text) {
+                    //     error_DialogBox(context, controller.inputEmail.text,
+                    //         controller.inputPass.text);
+                    //   } else {
+                    //     error_DialogBox(context, controller.inputEmail.text,
+                    //         controller.inputPass.text);
+                    //   }
+                    // } else if (controller.inputEmail.text == "" ||
+                    //     controller.inputPass.text == "") {
+                    //   error_DialogBox(context, controller.inputEmail.text,
+                    //       controller.inputPass.text);
+                    //   // error_DialogBox(context,);
+                    // }
+                    //
+                    //Upor Tolok
+//
+
+                    //
+                    //
+//
+                    //onno ekta
                     // return null;
                     //Data Matching Logic
                     // (KData.userEmail == _InputEmail.text) &&
