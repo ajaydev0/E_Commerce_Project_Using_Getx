@@ -1,3 +1,4 @@
+import 'package:demo/Widgets/Scaffold_Widget.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Get.put(SplashController());
-    return Scaffold(
+    return KScaffold(
+      extendBody: true,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

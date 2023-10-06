@@ -6,6 +6,7 @@ import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
 import '../../../../../Widgets/TextField_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
+import '../../user_data/users.dart';
 import '../controller/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -47,10 +48,11 @@ class SignUpView extends GetView<SignUpController> {
                 ),
                 KsBox(h: 10),
                 KtextField(
+                  maxLength: 8,
                   controller: controller.userNameController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  hintText: "First Name",
-                  labelText: "First Name",
+                  hintText: "User Name",
+                  labelText: "User Name",
                   prefixIcon: Icons.person,
                   // maxLength: 10,
                   // maxLengthEnforcement: MaxLengthEnforcement.none,
@@ -119,6 +121,11 @@ class SignUpView extends GetView<SignUpController> {
                   w: 150,
                   child: KeleButtonText(
                     onPressed: () {
+                      controller.signUpClick(controller);
+
+                      //
+                      //New
+                      //
                       // _FormKey.currentState?.validate();
                       // var userName = userNameController.text.trim();
                       // var userPhone = userPhoneController.text.trim();

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../modules/auth/sign_in/bindings/sign_in_binding.dart';
 import '../modules/auth/sign_in/views/sign_in_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
@@ -18,11 +17,10 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/splash_screen/bindings/splash_binding.dart';
 import '../modules/splash_screen/views/splash_view.dart';
-
 part 'app_routes.dart';
 
 class AppPages {
-  static const initialPage = Routes.navScreen;
+  static const initialPage = Routes.splashScreen;
 
   static final pages = [
     GetPage(

@@ -1,3 +1,4 @@
+import 'package:demo/app/modules/auth/user_data/users.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -285,8 +286,12 @@ class ProfileView extends GetView<ProfileController> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Ktext(
-                      text: KData.userName, size: 23, weight: FontWeight.bold),
-                  Ktext(text: KData.userEmail, color: appcolors.halkablack),
+                      text: controller.profileName,
+                      size: 23,
+                      weight: FontWeight.bold),
+                  Ktext(
+                      text: controller.profileEmail,
+                      color: appcolors.halkablack),
                 ],
               ),
             ),

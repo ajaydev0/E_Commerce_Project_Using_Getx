@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../router/app_pages.dart';
 
 class SignInController extends GetxController {
@@ -13,7 +12,7 @@ class SignInController extends GetxController {
 
   //Key
   final formKey = GlobalKey<FormState>();
-  bool passwordVisible = true;
+  RxBool passwordVisible = true.obs;
   final TextEditingController inputEmail = TextEditingController();
   final TextEditingController inputPass = TextEditingController();
 }

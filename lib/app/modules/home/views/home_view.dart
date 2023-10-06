@@ -1,3 +1,4 @@
+import 'package:demo/app/modules/auth/user_data/users.dart';
 import 'package:demo/app/modules/home/controller/home_controller.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,7 @@ class HomeView extends GetView<HomeController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Ktext(
-                            text: "Ajay Dev",
+                            text: box.value.read("userName"),
                             color: appcolors.white,
                             weight: FontWeight.bold,
                             size: 25,

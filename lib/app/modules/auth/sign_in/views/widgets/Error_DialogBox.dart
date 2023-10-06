@@ -1,8 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, file_names
 
 import 'package:flutter/material.dart';
-
-import '../../../../../../utils/User_Data.dart';
+import '../../../user_data/users.dart';
 
 error_DialogBox(context, [emailInput, passInput]) {
   return showDialog(
@@ -36,9 +35,13 @@ error_DialogBox(context, [emailInput, passInput]) {
                                 ? "Enter Email"
                                 : passInput == ""
                                     ? "Enter Password"
-                                    : KData.userEmail == emailInput
+                                    : box.value.read("userEmail").toString() ==
+                                            emailInput
                                         ? "Password Not Match"
-                                        : KData.UserPass == passInput
+                                        : box.value
+                                                    .read("userPass")
+                                                    .toString() ==
+                                                passInput
                                             ? "Email Not Match"
                                             : "User Not Found",
 
