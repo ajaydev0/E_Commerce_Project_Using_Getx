@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:demo/Widgets/Scaffold_Widget.dart';
 import 'package:demo/app/modules/auth/sign_in/controller/sign_in%20_controller.dart';
 import 'package:demo/utils/Ui_Content.dart';
@@ -6,9 +8,8 @@ import 'package:get/get.dart';
 import '../../../../../Widgets/Container_Widget.dart';
 import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
-
 import '../../../../../Widgets/Text_Widget.dart';
-import '../../../../../utils/User_Data.dart';
+import '../../../../router/app_pages.dart';
 import '../../user_data/users.dart';
 import 'widgets/Error_DialogBox.dart';
 import 'widgets/Success_DialogBox.dart';
@@ -47,50 +48,53 @@ class SignInView extends GetView<SignInController> {
                     weight: FontWeight.bold,
                     textAlign: TextAlign.right),
                 KsBox(h: 20),
-                TextFormField(
-                    onChanged: (value) {},
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return " Required";
-                      }
-                      if (!value.trim().contains("@gmail.com")) {
-                        return "Enter valid email";
-                      }
-                      return null;
-                    },
-                    controller: controller.inputEmail,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
+                Obx(
+                  () => TextFormField(
+                      onChanged: (value) {},
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return " Required";
+                        }
+                        if (!value.trim().contains("@gmail.com")) {
+                          return "Enter valid email";
+                        }
+                        return null;
+                      },
+                      controller: controller.inputEmail,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            borderSide: BorderSide(color: appcolors.mainColor)),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
-                          borderSide: BorderSide(color: appcolors.mainColor)),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
                         ),
-                      ),
-                      hintText: "test@gmail.com",
-                      labelText: "Email or username",
-                      prefixIcon: const Icon(
-                        Icons.person,
-                      ),
-                      suffixIcon: KData.userEmail == controller.inputEmail.text
-                          ? Icon(
-                              Icons.check,
-                              color: appcolors.mainColor,
-                            )
-                          : controller.inputEmail.text != ""
-                              ? GestureDetector(
-                                  onTap: () => controller.inputEmail.clear(),
-                                  child: const Icon(
-                                    Icons.close,
-                                    color: appcolors.red,
-                                  ),
-                                )
-                              : null,
-                    )),
+                        hintText: "test@gmail.com",
+                        labelText: "Email or username",
+                        prefixIcon: const Icon(
+                          Icons.person,
+                        ),
+                        suffixIcon: box.value.read("userEmail").toString() ==
+                                controller.inputEmail.text
+                            ? Icon(
+                                Icons.check,
+                                color: appcolors.mainColor,
+                              )
+                            : controller.inputEmail.text != ""
+                                ? GestureDetector(
+                                    onTap: () => controller.inputEmail.clear(),
+                                    child: const Icon(
+                                      Icons.close,
+                                      color: appcolors.red,
+                                    ),
+                                  )
+                                : null,
+                      )),
+                ),
                 KsBox(h: 10),
                 Obx(
                   () => TextFormField(
@@ -104,8 +108,9 @@ class SignInView extends GetView<SignInController> {
                       }
                       return null;
                     },
-                    controller: controller.inputPass,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: controller.inputPass,
+
                     maxLength: 8,
                     // maxLengthEnforcement: MaxLengthEnforcement.none,
                     obscureText: controller.passwordVisible.value,
@@ -169,10 +174,6 @@ class SignInView extends GetView<SignInController> {
                     print(box.value.read("userName").toString());
                     print(box.value.read("userEmail").toString());
                     print(box.value.read("userPass").toString());
-                    // print(KData.userEmail);
-                    // print(KData.UserPass);
-
-                    //
                     //Validation Key
                     if (controller.formKey.currentState!.validate()) {
                       if (controller.inputEmail.text ==
@@ -196,37 +197,17 @@ class SignInView extends GetView<SignInController> {
                         controller.inputPass.text == "") {
                       error_DialogBox(context, controller.inputEmail.text,
                           controller.inputPass.text);
-                      // error_DialogBox(context,);
                     }
-                    //
-                    //Upor Tolok
-//
-
-                    //
-                    //
-//
-                    //onno ekta
-                    // return null;
-                    //Data Matching Logic
-                    // (KData.userEmail == _InputEmail.text) &&
-                    //         (KData.UserPass == _InputPass.text)
-                    //     ?
-                    //     : //Error Page
                   },
                 ),
                 KsBox(h: 30),
-                ElevatedButton(
-                    onPressed: () {
-                      box.value.erase();
-                    },
-                    child: Text("Clear Data")),
                 KeleButtonText(
                     h: 25,
                     w: 170,
                     tSize: 14,
                     tColor: appcolors.black,
                     backgroundColor: appcolors.grey,
-                    text: "Forgotten password?",
+                    text: "Forgotten Password ",
                     onPressed: () {}),
                 KsBox(h: 14),
                 KeleButtonText(
@@ -237,7 +218,9 @@ class SignInView extends GetView<SignInController> {
                     tColor: appcolors.black,
                     text: "Don't have an account? Sign Up",
                     onPressed: () {
-                      controller.signUpGo();
+                      Get.offAllNamed(Routes.signUpScreen);
+                      // Get.toNamed(Routes.signUpScreen);
+                      // controller.signUpGo();
                     }),
                 KsBox(h: 90),
               ],

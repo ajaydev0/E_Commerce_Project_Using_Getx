@@ -13,10 +13,14 @@ class SplashController extends GetxController {
   goSplash() async {
     await Future.delayed(
       const Duration(
-        seconds: 5,
+        seconds: 3,
       ),
       () {
-        Get.toNamed(Routes.signInScreen);
+        if (box.value.read("userEmail") == null) {
+          Get.offAllNamed(Routes.signUpScreen);
+        } else {
+          Get.offAllNamed(Routes.navScreen);
+        }
       },
     );
   }

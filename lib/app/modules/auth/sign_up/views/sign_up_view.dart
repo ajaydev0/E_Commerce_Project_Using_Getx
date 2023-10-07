@@ -1,3 +1,4 @@
+import 'package:demo/app/router/app_pages.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,6 @@ import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
 import '../../../../../Widgets/TextField_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
-import '../../user_data/users.dart';
 import '../controller/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -70,17 +70,33 @@ class SignUpView extends GetView<SignUpController> {
                 // ),
                 // KsBox(h: 10),
                 KtextField(
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return " Required";
+                    }
+                    if (!value.trim().contains("@gmail.com")) {
+                      return "Enter valid email";
+                    }
+                    return null;
+                  },
                   controller: controller.userEmailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   hintText: "E-mail",
                   labelText: "E-mail",
                   prefixIcon: Icons.email,
-                  // maxLength: 22,
-                  // maxLengthEnforcement: MaxLengthEnforcement.none,
                 ),
                 KsBox(h: 10),
                 Obx(
                   () => TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return " Requied";
+                      }
+                      if (!value.trim().contains("@")) {
+                        return "Enter Strong Password (@)";
+                      }
+                      return null;
+                    },
                     obscureText: controller.passwordVisible.value,
                     controller: controller.userPasswordController,
                     maxLength: 8,
@@ -121,7 +137,9 @@ class SignUpView extends GetView<SignUpController> {
                   w: 150,
                   child: KeleButtonText(
                     onPressed: () {
-                      controller.signUpClick(controller);
+                      if (controller.formKey.currentState!.validate()) {
+                        controller.signUpClick(controller);
+                      }
 
                       //
                       //New
@@ -150,7 +168,8 @@ class SignUpView extends GetView<SignUpController> {
                   w: 240,
                   child: KeleButtonText(
                       onPressed: () {
-                        controller.backGo();
+                        Get.offAllNamed(Routes.signInScreen);
+                        // controller.backGo();
                       },
                       text: "Already have an account? Log In",
                       tSize: 14,
