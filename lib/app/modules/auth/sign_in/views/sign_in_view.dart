@@ -208,7 +208,9 @@ class SignInView extends GetView<SignInController> {
                     tColor: appcolors.black,
                     backgroundColor: appcolors.grey,
                     text: "Forgotten Password ",
-                    onPressed: () {}),
+                    onPressed: () {
+                      box.value.erase();
+                    }),
                 KsBox(h: 14),
                 KeleButtonText(
                     h: 25,
