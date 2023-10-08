@@ -52,11 +52,12 @@ class HomeView extends GetView<HomeController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Ktext(
-                            text: box.value.read("userName"),
-                            color: appcolors.white,
-                            weight: FontWeight.bold,
-                            size: 25,
+                          Text(
+                            box.value.read("userName"),
+                            style: const TextStyle(
+                                color: appcolors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
                           ),
                           Row(
                             children: [
@@ -192,7 +193,7 @@ class HomeView extends GetView<HomeController> {
                                                 decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: NetworkImage(
+                                                    image: AssetImage(
                                                         product.imgUrl
                                                         // HomePageBox1().itemName[index],
                                                         // HomePageBox1().itemImg[index]

@@ -1,4 +1,5 @@
 import 'package:demo/app/modules/auth/user_data/users.dart';
+import 'package:demo/app/router/app_pages.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -140,7 +141,9 @@ class ProfileView extends GetView<ProfileController> {
                         color: appcolors.white,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Get.offAllNamed(Routes.signInScreen);
+                    },
                   ),
                 ),
               ),

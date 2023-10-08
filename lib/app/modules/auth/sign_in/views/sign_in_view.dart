@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:demo/Widgets/Scaffold_Widget.dart';
 import 'package:demo/app/modules/auth/sign_in/controller/sign_in%20_controller.dart';
 import 'package:demo/utils/Ui_Content.dart';
@@ -9,10 +8,7 @@ import '../../../../../Widgets/Container_Widget.dart';
 import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
-import '../../../../router/app_pages.dart';
 import '../../user_data/users.dart';
-import 'widgets/Error_DialogBox.dart';
-import 'widgets/Success_DialogBox.dart';
 
 class SignInView extends GetView<SignInController> {
   const SignInView({super.key});
@@ -52,17 +48,12 @@ class SignInView extends GetView<SignInController> {
                   () => TextFormField(
                       onChanged: (value) {},
                       validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return " Required";
-                        }
-                        if (!value.trim().contains("@gmail.com")) {
-                          return "Enter valid email";
-                        }
-                        return null;
+                        return controller.validateEmail(value);
                       },
                       controller: controller.inputEmail,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
+                        prefixIconColor: appcolors.mainColor,
                         enabledBorder: OutlineInputBorder(
                             borderRadius: const BorderRadius.all(
                               Radius.circular(10),
@@ -100,13 +91,7 @@ class SignInView extends GetView<SignInController> {
                   () => TextFormField(
                     // onChanged: (value) {},
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return " Requied";
-                      }
-                      if (!value.trim().contains("@")) {
-                        return "Enter Strong Password (@)";
-                      }
-                      return null;
+                      return controller.validatePass(value);
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: controller.inputPass,
@@ -115,6 +100,7 @@ class SignInView extends GetView<SignInController> {
                     // maxLengthEnforcement: MaxLengthEnforcement.none,
                     obscureText: controller.passwordVisible.value,
                     decoration: InputDecoration(
+                      prefixIconColor: appcolors.mainColor,
                       enabledBorder: OutlineInputBorder(
                           borderRadius: const BorderRadius.all(
                             Radius.circular(10),
@@ -171,33 +157,7 @@ class SignInView extends GetView<SignInController> {
                   tSize: 18,
                   tWeight: FontWeight.bold,
                   onPressed: () {
-                    print(box.value.read("userName").toString());
-                    print(box.value.read("userEmail").toString());
-                    print(box.value.read("userPass").toString());
-                    //Validation Key
-                    if (controller.formKey.currentState!.validate()) {
-                      if (controller.inputEmail.text ==
-                              box.value.read("userEmail").toString() &&
-                          box.value.read("userPass").toString() ==
-                              controller.inputPass.text) {
-                        successDialogBox(
-                          context,
-                        );
-                      } else if (box.value.read("userEmail").toString() !=
-                              controller.inputEmail.text ||
-                          box.value.read("userPass").toString() !=
-                              controller.inputPass.text) {
-                        error_DialogBox(context, controller.inputEmail.text,
-                            controller.inputPass.text);
-                      } else {
-                        error_DialogBox(context, controller.inputEmail.text,
-                            controller.inputPass.text);
-                      }
-                    } else if (controller.inputEmail.text == "" ||
-                        controller.inputPass.text == "") {
-                      error_DialogBox(context, controller.inputEmail.text,
-                          controller.inputPass.text);
-                    }
+                    controller.signInClick(context, controller);
                   },
                 ),
                 KsBox(h: 30),
@@ -220,9 +180,7 @@ class SignInView extends GetView<SignInController> {
                     tColor: appcolors.black,
                     text: "Don't have an account? Sign Up",
                     onPressed: () {
-                      Get.offAllNamed(Routes.signUpScreen);
-                      // Get.toNamed(Routes.signUpScreen);
-                      // controller.signUpGo();
+                      controller.goSignUp();
                     }),
                 KsBox(h: 90),
               ],

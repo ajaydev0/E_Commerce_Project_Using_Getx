@@ -1,3 +1,4 @@
+import 'package:demo/Widgets/Scaffold_Widget.dart';
 import 'package:demo/app/router/app_pages.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../../Widgets/Container_Widget.dart';
 import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
-import '../../../../../Widgets/TextField_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
 import '../controller/sign_up_controller.dart';
 
@@ -15,7 +15,8 @@ class SignUpView extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
-    return Scaffold(
+    return KScaffold(
+      extendBody: true,
       body: SingleChildScrollView(
         child: Kcontainer(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -47,55 +48,59 @@ class SignUpView extends GetView<SignUpController> {
                       color: Colors.grey),
                 ),
                 KsBox(h: 10),
-                KtextField(
-                  maxLength: 8,
+                TextFormField(
+                  validator: (value) {
+                    return controller.validateName(value);
+                  },
+                  decoration: InputDecoration(
+                    prefixIconColor: appcolors.mainColor,
+                    hintText: "User Name",
+                    labelText: "User Name",
+                    prefixIcon: const Icon(Icons.person),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        borderSide: BorderSide(color: appcolors.mainColor)),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                  ),
+                  // maxLength: 8,
                   controller: controller.userNameController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  hintText: "User Name",
-                  labelText: "User Name",
-                  prefixIcon: Icons.person,
-                  // maxLength: 10,
-                  // maxLengthEnforcement: MaxLengthEnforcement.none,
                 ),
-                // Divider(),
                 KsBox(h: 10),
-                // KtextField(
-                //   controller: userPhoneController,
-                //   autovalidateMode: AutovalidateMode.onUserInteraction,
-                //   hintText: "Phone Number",
-                //   labelText: "Phone Number",
-                //   prefixIcon: Icons.phone,
-                //   // maxLength: 6,
-                //   // maxLengthEnforcement: MaxLengthEnforcement.none,
-                // ),
-                // KsBox(h: 10),
-                KtextField(
+                TextFormField(
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return " Required";
-                    }
-                    if (!value.trim().contains("@gmail.com")) {
-                      return "Enter valid email";
-                    }
-                    return null;
+                    return controller.validateEmail(value);
                   },
                   controller: controller.userEmailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  hintText: "E-mail",
-                  labelText: "E-mail",
-                  prefixIcon: Icons.email,
+                  decoration: InputDecoration(
+                    prefixIconColor: appcolors.mainColor,
+                    hintText: "E-mail",
+                    labelText: "E-mail",
+                    prefixIcon: const Icon(Icons.email),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        borderSide: BorderSide(color: appcolors.mainColor)),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                  ),
                 ),
                 KsBox(h: 10),
                 Obx(
                   () => TextFormField(
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return " Requied";
-                      }
-                      if (!value.trim().contains("@")) {
-                        return "Enter Strong Password (@)";
-                      }
-                      return null;
+                      return controller.validatePass(value);
                     },
                     obscureText: controller.passwordVisible.value,
                     controller: controller.userPasswordController,
@@ -130,7 +135,6 @@ class SignUpView extends GetView<SignUpController> {
                     ),
                   ),
                 ),
-
                 KsBox(h: 5),
                 KsBox(
                   h: 40,

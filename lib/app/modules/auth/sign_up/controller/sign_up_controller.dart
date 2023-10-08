@@ -6,6 +6,39 @@ import '../../../../router/app_pages.dart';
 import '../../user_data/users.dart';
 
 class SignUpController extends GetxController {
+  // Validation Name  TextFormFeild
+  validateName(value) {
+    if (value == null || value.trim().isEmpty) {
+      return " Required";
+    }
+    // if (!value.trim().contains("")) {
+    //   return " First Letter Required Capital Letter(Aa) ";
+    // }
+    return null;
+  }
+
+  // Validation Email  TextFormFeild
+  validateEmail(value) {
+    if (value == null || value.trim().isEmpty) {
+      return " Required";
+    }
+    if (!value.trim().contains("@gmail.com")) {
+      return "Enter valid email";
+    }
+    return null;
+  }
+
+  // Validation Password TextFormFeild
+  validatePass(value) {
+    if (value == null || value.isEmpty) {
+      return " Requied";
+    }
+    if (!value.trim().contains("@")) {
+      return "Enter Strong Password (@)";
+    }
+    return null;
+  }
+
   //SignUp Button Click
   signUpClick(controller) {
     box.value.write("userName", controller.userNameController.text);
