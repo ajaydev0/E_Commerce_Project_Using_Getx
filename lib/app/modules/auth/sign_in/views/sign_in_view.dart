@@ -32,7 +32,7 @@ class SignInView extends GetView<SignInController> {
                     h: 220,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                      image: AssetImage(image.flash_Screen_Img),
+                      image: NetworkImage(image.flash_Screen_Img),
                     )),
                   ),
                 ),

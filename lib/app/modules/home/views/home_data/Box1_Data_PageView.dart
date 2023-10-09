@@ -98,7 +98,7 @@ class ProductsList {
 
 // //PageView.Builder OnTap List
 class HomeData2 {
-  final Ontap;
+  dynamic Ontap;
   HomeData2({
     required this.Ontap,
   });

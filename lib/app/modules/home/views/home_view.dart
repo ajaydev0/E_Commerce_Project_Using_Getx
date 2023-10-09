@@ -95,20 +95,25 @@ class HomeView extends GetView<HomeController> {
                               // KsBox(
                               //   w: Kw(context: context, value: 2),
                               // ),
-                              Kcontainer(
-                                h: 50,
-                                w: Kw(context: context, value: 14),
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(.3),
-                                        blurRadius: 10.0,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: appcolors.white),
-                                child: const Icon(Icons.add_a_photo_outlined),
+                              GestureDetector(
+                                onTap: () {
+                                  Exit_DialogBox(context);
+                                },
+                                child: Kcontainer(
+                                  h: 50,
+                                  w: Kw(context: context, value: 14),
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(.3),
+                                          blurRadius: 10.0,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: appcolors.white),
+                                  child: const Icon(Icons.add_a_photo_outlined),
+                                ),
                               ),
                               // KsBox(w: Kw(context: context, value: 5)),
                             ],
@@ -147,53 +152,57 @@ class HomeView extends GetView<HomeController> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Hero(
                                   tag: ProductsList().itemData[index].name,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      // Navigator.of(context).push(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => navigation()
-                                      //             .nav[index]
-                                      //             .Ontap));
-                                    },
-                                    child: Kcontainer(
-                                        h: 30,
-                                        w: Kw(context: context, value: 5),
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            //upor nic
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(.4),
-                                              blurRadius: 3.0,
-                                              offset: const Offset(0, 5),
-                                            ),
-                                            //left
-                                            // BoxShadow(
-                                            //   color: Colors.white,
-                                            //   offset: Offset(-5, 0),
-                                            // ),
-                                            // //right
-                                            // BoxShadow(
-                                            //   color: Colors.white,
-                                            //   offset: Offset(5, 0),
-                                            // ),
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: Colors.white,
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Positioned(
-                                              top: 13,
-                                              left: 10,
+                                  child: Kcontainer(
+                                      h: 30,
+                                      w: Kw(context: context, value: 5),
+                                      decoration: BoxDecoration(
+                                        boxShadow: [
+                                          //upor nic
+                                          BoxShadow(
+                                            color: Colors.black.withOpacity(.4),
+                                            blurRadius: 3.0,
+                                            offset: const Offset(0, 5),
+                                          ),
+                                          //left
+                                          // BoxShadow(
+                                          //   color: Colors.white,
+                                          //   offset: Offset(-5, 0),
+                                          // ),
+                                          // //right
+                                          // BoxShadow(
+                                          //   color: Colors.white,
+                                          //   offset: Offset(5, 0),
+                                          // ),
+                                        ],
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white,
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            top: 13,
+                                            left: 10,
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                // Get.off(ProductDetail1());
+                                                //normal
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            navigation()
+                                                                .nav[index]
+                                                                .Ontap));
+                                                print("Clicked 22");
+                                                // Get.to(() =>
+                                                //     navigation().nav[index]);
+                                              },
                                               child: Kcontainer(
                                                 h: 100,
                                                 w: 150,
                                                 decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage(
+                                                    image: NetworkImage(
                                                         product.imgUrl
                                                         // HomePageBox1().itemName[index],
                                                         // HomePageBox1().itemImg[index]
@@ -204,120 +213,123 @@ class HomeView extends GetView<HomeController> {
                                                 ),
                                               ),
                                             ),
-                                            Positioned(
-                                              top: 15,
-                                              left: 170,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Ktext(
-                                                    text: "Premium",
-                                                    size: 12,
-                                                  ),
-                                                  KsBox(
-                                                    h: 2,
-                                                  ),
-                                                  Ktext(
-                                                    text: product.name,
-                                                    // text: HomePageBox1().itemName[index],
-                                                    size: 18,
-                                                    weight: FontWeight.bold,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Kcontainer(
-                                                        margin: const EdgeInsets
-                                                            .only(right: 1),
-                                                        child: const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                          size: 12,
-                                                        ),
-                                                      ),
-                                                      Kcontainer(
-                                                        margin: const EdgeInsets
-                                                            .only(right: 1),
-                                                        child: const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                          size: 12,
-                                                        ),
-                                                      ),
-                                                      Kcontainer(
-                                                        margin: const EdgeInsets
-                                                            .only(right: 1),
-                                                        child: const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                          size: 12,
-                                                        ),
-                                                      ),
-                                                      Kcontainer(
-                                                        margin: const EdgeInsets
-                                                            .only(right: 1),
-                                                        child: const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                          size: 12,
-                                                        ),
-                                                      ),
-                                                      Kcontainer(
-                                                        margin: const EdgeInsets
-                                                            .only(right: 5),
-                                                        child: const Icon(
-                                                          Icons.star,
-                                                          color: Colors.grey,
-                                                          size: 12,
-                                                        ),
-                                                      ),
-                                                      Ktext(
-                                                        text: '4.0',
-                                                        color: Colors.black87,
+                                          ),
+                                          Positioned(
+                                            top: 15,
+                                            left: 170,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Ktext(
+                                                  text: "Premium",
+                                                  size: 12,
+                                                ),
+                                                KsBox(
+                                                  h: 2,
+                                                ),
+                                                Ktext(
+                                                  text: product.name,
+                                                  // text: HomePageBox1().itemName[index],
+                                                  size: 18,
+                                                  weight: FontWeight.bold,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Kcontainer(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 1),
+                                                      child: const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
                                                         size: 12,
                                                       ),
-                                                    ],
-                                                  ),
-                                                  KsBox(
-                                                    h: 5,
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      //toast
-                                                      // _showToast(context);
-                                                      // print("Data Added");
-                                                      // print(cartItems);
-                                                      //data add
-                                                      controller
-                                                          .addToCart(product);
-                                                    },
-                                                    child: Kcontainer(
-                                                        h: 35,
-                                                        w: 90,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.black,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                        ),
-                                                        child: Center(
-                                                            child: Ktext(
-                                                                text:
-                                                                    "Add to Cart",
-                                                                size: 13,
-                                                                color: Colors
-                                                                    .white,
-                                                                weight:
-                                                                    FontWeight
-                                                                        .bold))),
-                                                  ),
-                                                ],
-                                              ),
+                                                    ),
+                                                    Kcontainer(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 1),
+                                                      child: const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                        size: 12,
+                                                      ),
+                                                    ),
+                                                    Kcontainer(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 1),
+                                                      child: const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                        size: 12,
+                                                      ),
+                                                    ),
+                                                    Kcontainer(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 1),
+                                                      child: const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                        size: 12,
+                                                      ),
+                                                    ),
+                                                    Kcontainer(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 5),
+                                                      child: const Icon(
+                                                        Icons.star,
+                                                        color: Colors.grey,
+                                                        size: 12,
+                                                      ),
+                                                    ),
+                                                    Ktext(
+                                                      text: '4.0',
+                                                      color: Colors.black87,
+                                                      size: 12,
+                                                    ),
+                                                  ],
+                                                ),
+                                                KsBox(
+                                                  h: 5,
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    //toast
+                                                    // _showToast(context);
+                                                    // print("Data Added");
+                                                    // print(cartItems);
+                                                    //data add
+                                                    controller
+                                                        .addToCart(product);
+                                                  },
+                                                  child: Kcontainer(
+                                                      h: 35,
+                                                      w: 90,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.black,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                      ),
+                                                      child: Center(
+                                                          child: Ktext(
+                                                              text:
+                                                                  "Add to Cart",
+                                                              size: 13,
+                                                              color:
+                                                                  Colors.white,
+                                                              weight: FontWeight
+                                                                  .bold))),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        )),
-                                  ),
+                                          ),
+                                        ],
+                                      )),
                                 ),
                               ),
                             );

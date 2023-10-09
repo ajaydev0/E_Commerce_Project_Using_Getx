@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names
-
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../Widgets/AppSize_MediaQuery.dart';
 import '../../../../../Widgets/Container_Widget.dart';
 import '../../../../../Widgets/Scaffold_Widget.dart';
@@ -25,6 +23,7 @@ class _ProductDetail4State extends State<ProductDetail4> {
     BuildContext context,
   ) {
     return KScaffold(
+      extendBody: true,
       body: SafeArea(
         child: Column(
           children: [

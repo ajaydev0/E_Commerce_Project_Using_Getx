@@ -25,6 +25,7 @@ class _ProductDetail1State extends State<ProductDetail1> {
     BuildContext context,
   ) {
     return KScaffold(
+      extendBody: true,
       body: SafeArea(
         child: Column(
           children: [
@@ -288,8 +289,6 @@ class _ProductDetail1State extends State<ProductDetail1> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    setState(() {});
-
                                     // print("Add Data");
                                   },
                                   child: Kcontainer(

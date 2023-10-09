@@ -25,6 +25,7 @@ class _ProductDetail2State extends State<ProductDetail2> {
     BuildContext context,
   ) {
     return KScaffold(
+      extendBody: true,
       body: SafeArea(
         child: Column(
           children: [

@@ -21,7 +21,9 @@ class appcolors {
 class image {
   static const String Prodile_Img =
       "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400";
-  static const String flash_Screen_Img = "assets/images/splash_img.png";
+  // static const String flash_Screen_Img = "assets/images/splash_img.png";
+  static const String flash_Screen_Img =
+      "https://cdn-icons-png.flaticon.com/512/9858/9858082.png";
   // static const String HomePage_product_Img1 =
   //     "https://images.pexels.com/photos/1580267/pexels-photo-1580267.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load";
 }

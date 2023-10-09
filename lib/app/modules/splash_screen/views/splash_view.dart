@@ -25,7 +25,7 @@ class SplashView extends GetView<SplashController> {
               w: 200,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                image: AssetImage(image.flash_Screen_Img),
+                image: NetworkImage(image.flash_Screen_Img),
               )),
             ),
             // SizedBox(height: 20),
