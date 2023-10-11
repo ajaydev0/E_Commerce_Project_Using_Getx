@@ -1,4 +1,6 @@
+// ignore_for_file: avoid_print
 import 'package:demo/utils/Ui_Content.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../Widgets/Text_Widget.dart';
@@ -6,6 +8,7 @@ import '../../../router/app_pages.dart';
 import '../controller/profile_controller.dart';
 
 Drawer drawerBody(ProfileController controller, BuildContext context) {
+  var controller = Get.put(ProfileController());
   return Drawer(
     // width: Kw(value: 70, context: context),
     child: Column(
@@ -102,7 +105,8 @@ Drawer drawerBody(ProfileController controller, BuildContext context) {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.changeTheme(ThemeData.light());
+                              Get.changeThemeMode(ThemeMode.light);
+                              // Get.changeTheme(ThemeData.light());
 
                               print("LightMode");
                             },
@@ -128,9 +132,12 @@ Drawer drawerBody(ProfileController controller, BuildContext context) {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.changeTheme(ThemeData.dark());
+                              Get.changeThemeMode(ThemeMode.dark);
+                              // box.value.write("themeData", ThemeData());
+                              // Get.changeTheme(ThemeData.dark());
 
                               print("DarkMode");
+                              // print(KData.themeData);
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -152,15 +159,21 @@ Drawer drawerBody(ProfileController controller, BuildContext context) {
                       ),
                       Column(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(20)),
-                            height: 50,
-                            width: 50,
-                            child: const Icon(
-                              Icons.settings_suggest,
-                              color: Colors.white,
+                          GestureDetector(
+                            onTap: () {
+                              Get.changeThemeMode(ThemeMode.system);
+                              print("SystemThemeMode");
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(20)),
+                              height: 50,
+                              width: 50,
+                              child: const Icon(
+                                Icons.settings_suggest,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                           const SizedBox(

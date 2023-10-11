@@ -13,9 +13,9 @@ class SignInController extends GetxController {
     if (value == null || value.trim().isEmpty) {
       return " Required";
     }
-    if (!value.trim().contains("@gmail.com")) {
-      return "Enter valid email";
-    }
+    // if (!value.trim().contains("@gmail.com")) {
+    //   return "Enter valid email";
+    // }
     return null;
   }
 
@@ -24,9 +24,9 @@ class SignInController extends GetxController {
     if (value == null || value.isEmpty) {
       return " Requied";
     }
-    if (!value.trim().contains("@")) {
-      return "Enter Strong Password (@)";
-    }
+    // if (!value.trim().contains("@")) {
+    //   return "Enter Strong Password (@)";
+    // }
     return null;
   }
 

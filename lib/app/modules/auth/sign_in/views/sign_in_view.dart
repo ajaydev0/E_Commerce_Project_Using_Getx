@@ -64,7 +64,7 @@ class SignInView extends GetView<SignInController> {
                             Radius.circular(10),
                           ),
                         ),
-                        hintText: "test@gmail.com",
+                        hintText: "Email or username",
                         labelText: "Email or username",
                         prefixIcon: const Icon(
                           Icons.person,
@@ -111,7 +111,7 @@ class SignInView extends GetView<SignInController> {
                           Radius.circular(10),
                         ),
                       ),
-                      hintText: "@1234",
+                      hintText: "Password",
                       labelText: "Password",
                       prefixIcon: const Icon(Icons.password),
                       suffixIcon: Stack(

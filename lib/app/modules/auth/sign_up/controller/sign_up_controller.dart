@@ -2,7 +2,6 @@
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import '../../../../router/app_pages.dart';
 import '../../user_data/users.dart';
 

@@ -51,7 +51,7 @@ class SignUpView extends GetView<SignUpController> {
                 KsBox(h: 10),
                 KtextFeild(
                   maxLength: 6,
-                  obscureText: false,
+                  // obscureText: false,
                   controller: controller,
                   textEditingcontroller: controller.userNameController.value,
                   hintText: "User Name",
@@ -65,7 +65,7 @@ class SignUpView extends GetView<SignUpController> {
 
                 KsBox(h: 10),
                 KtextFeild(
-                  obscureText: false,
+                  // obscureText: false,
                   // validator: (value) {
                   //   return controller.validateEmail(value);
                   // },
@@ -78,30 +78,28 @@ class SignUpView extends GetView<SignUpController> {
                 ),
 
                 KsBox(h: 10),
-                Obx(
-                  () => KtextFeild(
-                    controller: controller,
-                    obscureText: controller.passwordVisible.value,
-                    textEditingcontroller:
-                        controller.userPasswordController.value,
-                    hintText: "Password",
-                    labelText: "Password",
-                    // validator: (value) {
-                    //   return controller.validatePass(value);
-                    // },
-                    maxLength: 8,
-                    prefixIcon: const Icon(Icons.password),
-                    prefixIconColor: appcolors.mainColor,
-                    suffixIcon: IconButton(
-                      icon: Icon(controller.passwordVisible.value
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onPressed: () {
-                        controller.passwordVisible.value =
-                            !controller.passwordVisible.value;
-                        print(controller.passwordVisible.value);
-                      },
-                    ),
+                KtextFeild(
+                  controller: controller,
+                  // obscureText: controller.passwordVisible.value,
+                  textEditingcontroller:
+                      controller.userPasswordController.value,
+                  hintText: "Password",
+                  labelText: "Password",
+                  // validator: (value) {
+                  //   return controller.validatePass(value);
+                  // },
+                  maxLength: 8,
+                  prefixIcon: const Icon(Icons.password),
+                  prefixIconColor: appcolors.mainColor,
+                  suffixIcon: IconButton(
+                    icon: Icon(controller.passwordVisible.value
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                    onPressed: () {
+                      controller.passwordVisible.value =
+                          !controller.passwordVisible.value;
+                      print(controller.passwordVisible.value);
+                    },
                   ),
                 ),
 

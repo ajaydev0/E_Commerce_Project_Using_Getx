@@ -21,9 +21,8 @@ class NavView extends GetView<NavController> {
           child: Obx(
             () => BottomNavigationBar(
               //  height: 65,
-              selectedLabelStyle: const TextStyle(
-                fontSize: 11,
-              ),
+              selectedLabelStyle: TextStyle(fontSize: 11, color: Colors.black),
+              selectedIconTheme: IconThemeData(color: appcolors.blue400),
               unselectedLabelStyle: TextStyle(
                 color: appcolors.grey600,
                 fontSize: 11,

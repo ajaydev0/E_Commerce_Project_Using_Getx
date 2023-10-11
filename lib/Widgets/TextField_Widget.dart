@@ -2,7 +2,6 @@
 
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../app/modules/auth/sign_up/controller/sign_up_controller.dart';
 
@@ -12,7 +11,7 @@ class KtextFeild extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.labelText,
-    this.obscureText,
+    // this.obscureText,
     this.prefixIcon,
     this.prefixIconColor,
     this.maxLength,
@@ -24,7 +23,7 @@ class KtextFeild extends StatelessWidget {
   final SignUpController controller;
   final String hintText;
   final String labelText;
-  bool? obscureText = false;
+  // bool? obscureText;
   final Widget? prefixIcon;
   final Color? prefixIconColor;
   final int? maxLength;
@@ -36,7 +35,7 @@ class KtextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: controller.passwordVisible.value,
+      // obscureText: obscureText,
 
       // validator: (value){
       //   validator
