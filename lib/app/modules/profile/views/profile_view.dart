@@ -1,15 +1,12 @@
-import 'package:demo/app/modules/auth/user_data/users.dart';
-import 'package:demo/app/router/app_pages.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../Widgets/AppSize_MediaQuery.dart';
 import '../../../../Widgets/Container_Widget.dart';
 import '../../../../Widgets/Scaffold_Widget.dart';
 import '../../../../Widgets/Text_Widget.dart';
-import '../../../../utils/User_Data.dart';
 import '../controller/profile_controller.dart';
+import 'drawer_items.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
@@ -22,161 +19,7 @@ class ProfileView extends GetView<ProfileController> {
       key: controller.globalKey,
       endDrawer: SafeArea(
         bottom: false,
-        child: Drawer(
-          // width: Kw(value: 70, context: context),
-          child: Column(
-            children: [
-              Card(
-                child: ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.only(
-                      right: 80,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            //close Drawer
-                            controller.globalKey.currentState?.closeEndDrawer();
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: appcolors.black,
-                          ),
-                        ),
-                        Ktext(text: "Setting", size: 22),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 25, right: 25),
-                child: Divider(
-                  thickness: 2,
-                  color: appcolors.halkablack,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Card(
-                  child: ListTile(
-                    title: Ktext(text: "Account Setting"),
-                    leading: CircleAvatar(
-                      backgroundColor: appcolors.blue400,
-                      child: const Icon(
-                        Icons.settings,
-                        size: 20,
-                        color: appcolors.white,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Card(
-                  child: ListTile(
-                    title: Ktext(text: "My Order"),
-                    leading: CircleAvatar(
-                      backgroundColor: appcolors.blue400,
-                      child: const Icon(
-                        Icons.create,
-                        size: 20,
-                        color: appcolors.white,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Card(
-                  child: ListTile(
-                    title: Ktext(text: "Reviews"),
-                    leading: CircleAvatar(
-                      backgroundColor: appcolors.blue400,
-                      child: const Icon(
-                        Icons.reviews,
-                        size: 20,
-                        color: appcolors.white,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Card(
-                  child: ListTile(
-                    title: Ktext(text: "Chat with Us"),
-                    // subtitle: Text("Feel Free to Contact Us"),
-                    leading: CircleAvatar(
-                      backgroundColor: appcolors.blue400,
-                      child: const Icon(
-                        Icons.headset_mic_outlined,
-                        size: 20,
-                        color: appcolors.white,
-                      ),
-                    ),
-
-                    onTap: () {},
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Card(
-                  child: ListTile(
-                    title: Ktext(text: "Help Center"),
-                    leading: CircleAvatar(
-                      backgroundColor: appcolors.blue400,
-                      child: const Icon(
-                        Icons.question_mark,
-                        size: 20,
-                        color: appcolors.white,
-                      ),
-                    ),
-                    onTap: () {
-                      Get.offAllNamed(Routes.signInScreen);
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 25, right: 25),
-                child: Divider(
-                  thickness: 2,
-                  color: appcolors.halkablack,
-                ),
-              ),
-              Card(
-                child: ListTile(
-                  title: Ktext(text: "Log Out", weight: FontWeight.bold),
-                  leading: CircleAvatar(
-                    backgroundColor: appcolors.blue400,
-                    child: const Icon(
-                      Icons.logout,
-                      size: 20,
-                      color: appcolors.white,
-                    ),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward,
-                    color: appcolors.grey600,
-                  ),
-                  onTap: () {
-                    controller.logOutDialogBox(context);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: drawerBody(controller, context),
       ),
       extendBody: true,
       body: Column(

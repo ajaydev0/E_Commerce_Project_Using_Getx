@@ -1,4 +1,6 @@
 import 'package:demo/app/router/app_pages.dart';
+import 'package:demo/themes/dark_theme.dart';
+import 'package:demo/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // theme: lightTheme,
+      // darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.initialPage,
       getPages: AppPages.pages,

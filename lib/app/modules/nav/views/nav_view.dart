@@ -31,7 +31,8 @@ class NavView extends GetView<NavController> {
               onTap: (index) {
                 controller.ontap(index);
               },
-              backgroundColor: Colors.white,
+
+              // backgroundColor: Colors.white,
               type: BottomNavigationBarType.fixed,
               currentIndex: controller.selectIndex.value,
               items: [

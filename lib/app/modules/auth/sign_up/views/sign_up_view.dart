@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../../../Widgets/Container_Widget.dart';
 import '../../../../../Widgets/ElevatedButton_Widget.dart';
 import '../../../../../Widgets/SizeBox_Widget.dart';
+import '../../../../../Widgets/TextField_Widget.dart';
 import '../../../../../Widgets/Text_Widget.dart';
 import '../controller/sign_up_controller.dart';
 
@@ -48,93 +49,87 @@ class SignUpView extends GetView<SignUpController> {
                       color: Colors.grey),
                 ),
                 KsBox(h: 10),
-                TextFormField(
-                  validator: (value) {
-                    return controller.validateName(value);
-                  },
-                  decoration: InputDecoration(
-                    prefixIconColor: appcolors.mainColor,
-                    hintText: "User Name",
-                    labelText: "User Name",
-                    prefixIcon: const Icon(Icons.person),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(color: appcolors.mainColor)),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                  ),
-                  // maxLength: 8,
-                  controller: controller.userNameController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                KtextFeild(
+                  maxLength: 6,
+                  obscureText: false,
+                  controller: controller,
+                  textEditingcontroller: controller.userNameController.value,
+                  hintText: "User Name",
+                  labelText: "User Name",
+                  // validator: (value) {
+                  //   return controller.validateName(value);
+                  // },
+                  prefixIcon: const Icon(Icons.person),
+                  prefixIconColor: appcolors.mainColor,
                 ),
+
                 KsBox(h: 10),
-                TextFormField(
-                  validator: (value) {
-                    return controller.validateEmail(value);
-                  },
-                  controller: controller.userEmailController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    prefixIconColor: appcolors.mainColor,
-                    hintText: "E-mail",
-                    labelText: "E-mail",
-                    prefixIcon: const Icon(Icons.email),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(color: appcolors.mainColor)),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                  ),
+                KtextFeild(
+                  obscureText: false,
+                  // validator: (value) {
+                  //   return controller.validateEmail(value);
+                  // },
+                  controller: controller,
+                  textEditingcontroller: controller.userEmailController.value,
+                  prefixIconColor: appcolors.mainColor,
+                  hintText: "E-mail",
+                  labelText: "E-mail",
+                  prefixIcon: const Icon(Icons.email),
                 ),
+
                 KsBox(h: 10),
                 Obx(
-                  () => TextFormField(
-                    validator: (value) {
-                      return controller.validatePass(value);
-                    },
+                  () => KtextFeild(
+                    controller: controller,
                     obscureText: controller.passwordVisible.value,
-                    controller: controller.userPasswordController,
+                    textEditingcontroller:
+                        controller.userPasswordController.value,
+                    hintText: "Password",
+                    labelText: "Password",
+                    // validator: (value) {
+                    //   return controller.validatePass(value);
+                    // },
                     maxLength: 8,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      prefixIconColor: appcolors.mainColor,
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                          borderSide: BorderSide(color: appcolors.mainColor)),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      hintText: "Password",
-                      labelText: "Password",
-                      prefixIcon: const Icon(
-                        Icons.password,
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(controller.passwordVisible.value
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                        onPressed: () {
-                          controller.passwordVisible.value =
-                              !controller.passwordVisible.value;
-                        },
-                      ),
+                    prefixIcon: const Icon(Icons.password),
+                    prefixIconColor: appcolors.mainColor,
+                    suffixIcon: IconButton(
+                      icon: Icon(controller.passwordVisible.value
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onPressed: () {
+                        controller.passwordVisible.value =
+                            !controller.passwordVisible.value;
+                        print(controller.passwordVisible.value);
+                      },
                     ),
                   ),
                 ),
+
+                //
+                //
+                // Obx(
+                //   () => KtextField(
+                //     validator: (value) {
+                //       return controller.validatePass(value);
+                //     },
+                //     obscureText: controller.passwordVisible.value,
+                //     controller: controller.userPasswordController,
+                //     maxLength: 8,
+                //     autovalidateMode: AutovalidateMode.onUserInteraction,
+                //     hintText: "Password",
+                //     labelText: "Password",
+                //     prefixIcon: Icons.password,
+                //     suffixIcon: IconButton(
+                //       icon: Icon(controller.passwordVisible.value
+                //           ? Icons.visibility_off
+                //           : Icons.visibility),
+                //       onPressed: () {
+                //         controller.passwordVisible.value =
+                //             !controller.passwordVisible.value;
+                //       },
+                //     ),
+                //   ),
+                // ),
                 KsBox(h: 5),
                 KsBox(
                   h: 40,

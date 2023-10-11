@@ -2,10 +2,26 @@
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../../../../router/app_pages.dart';
 import '../../user_data/users.dart';
 
 class SignUpController extends GetxController {
+  //Go to Sign In Page
+  backGo() {
+    Get.back();
+  }
+
+  //Key
+  final formKey = GlobalKey<FormState>();
+  RxBool passwordVisible = true.obs;
+  final Rx<TextEditingController> userNameController =
+      TextEditingController().obs;
+  final Rx<TextEditingController> userEmailController =
+      TextEditingController().obs;
+  final Rx<TextEditingController> userPasswordController =
+      TextEditingController().obs;
+
   // Validation Name  TextFormFeild
   validateName(value) {
     if (value == null || value.trim().isEmpty) {
@@ -41,9 +57,9 @@ class SignUpController extends GetxController {
 
   //SignUp Button Click
   signUpClick(controller) {
-    box.value.write("userName", controller.userNameController.text);
-    box.value.write("userEmail", controller.userEmailController.text);
-    box.value.write("userPass", controller.userPasswordController.text);
+    box.value.write("userName", userNameController.value.text);
+    box.value.write("userEmail", userEmailController.value.text);
+    box.value.write("userPass", userPasswordController.value.text);
     //Dialog Box
     addSuccessFulBox();
     print(box.value.read("userName"));
@@ -148,16 +164,4 @@ class SignUpController extends GetxController {
       ),
     );
   }
-
-  //Go to Sign In Page
-  backGo() {
-    Get.back();
-  }
-
-  //Key
-  final formKey = GlobalKey<FormState>();
-  RxBool passwordVisible = true.obs;
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController userEmailController = TextEditingController();
-  final TextEditingController userPasswordController = TextEditingController();
 }
