@@ -51,83 +51,52 @@ class SignUpView extends GetView<SignUpController> {
                 KsBox(h: 10),
                 KtextFeild(
                   maxLength: 6,
-                  // obscureText: false,
-                  controller: controller,
-                  textEditingcontroller: controller.userNameController.value,
+                  counterText: "",
+                  validator: (value) {
+                    return controller.validateName(value);
+                  },
+                  controller: controller.userNameController.value,
                   hintText: "User Name",
                   labelText: "User Name",
-                  // validator: (value) {
-                  //   return controller.validateName(value);
-                  // },
                   prefixIcon: const Icon(Icons.person),
                   prefixIconColor: appcolors.mainColor,
                 ),
-
                 KsBox(h: 10),
                 KtextFeild(
-                  // obscureText: false,
-                  // validator: (value) {
-                  //   return controller.validateEmail(value);
-                  // },
-                  controller: controller,
-                  textEditingcontroller: controller.userEmailController.value,
+                  validator: (value) {
+                    return controller.validateEmail(value);
+                  },
+                  controller: controller.userEmailController.value,
                   prefixIconColor: appcolors.mainColor,
                   hintText: "E-mail",
                   labelText: "E-mail",
                   prefixIcon: const Icon(Icons.email),
                 ),
-
                 KsBox(h: 10),
-                KtextFeild(
-                  controller: controller,
-                  // obscureText: controller.passwordVisible.value,
-                  textEditingcontroller:
-                      controller.userPasswordController.value,
-                  hintText: "Password",
-                  labelText: "Password",
-                  // validator: (value) {
-                  //   return controller.validatePass(value);
-                  // },
-                  maxLength: 8,
-                  prefixIcon: const Icon(Icons.password),
-                  prefixIconColor: appcolors.mainColor,
-                  suffixIcon: IconButton(
-                    icon: Icon(controller.passwordVisible.value
-                        ? Icons.visibility_off
-                        : Icons.visibility),
-                    onPressed: () {
-                      controller.passwordVisible.value =
-                          !controller.passwordVisible.value;
-                      print(controller.passwordVisible.value);
+                Obx(
+                  () => KtextFeild(
+                    obscureText: controller.passwordVisible.value,
+                    controller: controller.userPasswordController.value,
+                    hintText: "Password",
+                    labelText: "Password",
+                    validator: (value) {
+                      return controller.validatePass(value);
                     },
+                    maxLength: 6,
+                    prefixIcon: const Icon(Icons.password),
+                    prefixIconColor: appcolors.mainColor,
+                    suffixIcon: IconButton(
+                      icon: Icon(controller.passwordVisible.value
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onPressed: () {
+                        controller.passwordVisible.value =
+                            !controller.passwordVisible.value;
+                        print(controller.passwordVisible.value);
+                      },
+                    ),
                   ),
                 ),
-
-                //
-                //
-                // Obx(
-                //   () => KtextField(
-                //     validator: (value) {
-                //       return controller.validatePass(value);
-                //     },
-                //     obscureText: controller.passwordVisible.value,
-                //     controller: controller.userPasswordController,
-                //     maxLength: 8,
-                //     autovalidateMode: AutovalidateMode.onUserInteraction,
-                //     hintText: "Password",
-                //     labelText: "Password",
-                //     prefixIcon: Icons.password,
-                //     suffixIcon: IconButton(
-                //       icon: Icon(controller.passwordVisible.value
-                //           ? Icons.visibility_off
-                //           : Icons.visibility),
-                //       onPressed: () {
-                //         controller.passwordVisible.value =
-                //             !controller.passwordVisible.value;
-                //       },
-                //     ),
-                //   ),
-                // ),
                 KsBox(h: 5),
                 KsBox(
                   h: 40,
@@ -137,22 +106,6 @@ class SignUpView extends GetView<SignUpController> {
                       if (controller.formKey.currentState!.validate()) {
                         controller.signUpClick(controller);
                       }
-
-                      //
-                      //New
-                      //
-                      // _FormKey.currentState?.validate();
-                      // var userName = userNameController.text.trim();
-                      // var userPhone = userPhoneController.text.trim();
-                      // var userEmail = userEmailController.text.trim();
-                      // var userPassword = userPasswordController.text.trim();
-
-                      // Firebase.instance
-                      //     .createUserWithEmailAndPassword(
-                      //         email: userEmail, password: userPassword)
-                      //     .then((Value) => {
-                      //           print("User Created"),
-                      //         });
                     },
                     text: "Sign Up",
                     tSize: 18,

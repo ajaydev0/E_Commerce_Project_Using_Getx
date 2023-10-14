@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:demo/Widgets/Scaffold_Widget.dart';
+import 'package:demo/Widgets/TextField_Widget.dart';
 import 'package:demo/app/modules/auth/sign_in/controller/sign_in%20_controller.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
@@ -45,105 +46,76 @@ class SignInView extends GetView<SignInController> {
                     textAlign: TextAlign.right),
                 KsBox(h: 20),
                 Obx(
-                  () => TextFormField(
-                      onChanged: (value) {},
-                      validator: (value) {
-                        return controller.validateEmail(value);
-                      },
-                      controller: controller.inputEmail,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        prefixIconColor: appcolors.mainColor,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                            borderSide: BorderSide(color: appcolors.mainColor)),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        hintText: "Email or username",
-                        labelText: "Email or username",
-                        prefixIcon: const Icon(
-                          Icons.person,
-                        ),
-                        suffixIcon: box.value.read("userEmail").toString() ==
-                                controller.inputEmail.text
-                            ? Icon(
-                                Icons.check,
-                                color: appcolors.mainColor,
+                  () => KtextFeild(
+                    hintText: "Email or username",
+                    labelText: "Email or username",
+                    validator: (value) {
+                      return controller.validateEmail(value);
+                    },
+                    controller: controller.inputEmail,
+                    prefixIconColor: appcolors.mainColor,
+                    prefixIcon: const Icon(
+                      Icons.person,
+                    ),
+                    suffixIcon: box.value.read("userEmail").toString() ==
+                            controller.inputEmail.value.text
+                        ? Icon(
+                            Icons.check,
+                            color: appcolors.mainColor,
+                          )
+                        : controller.inputEmail.value.text != ""
+                            ? GestureDetector(
+                                onTap: () => controller.inputEmail.clear(),
+                                child: const Icon(
+                                  Icons.close,
+                                  color: appcolors.red,
+                                ),
                               )
-                            : controller.inputEmail.text != ""
-                                ? GestureDetector(
-                                    onTap: () => controller.inputEmail.clear(),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: appcolors.red,
-                                    ),
-                                  )
-                                : null,
-                      )),
+                            : null,
+                  ),
                 ),
                 KsBox(h: 10),
                 Obx(
-                  () => TextFormField(
-                    // onChanged: (value) {},
+                  () => KtextFeild(
                     validator: (value) {
                       return controller.validatePass(value);
                     },
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: controller.inputPass,
-
-                    maxLength: 8,
-                    // maxLengthEnforcement: MaxLengthEnforcement.none,
                     obscureText: controller.passwordVisible.value,
-                    decoration: InputDecoration(
-                      prefixIconColor: appcolors.mainColor,
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                          borderSide: BorderSide(color: appcolors.mainColor)),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      hintText: "Password",
-                      labelText: "Password",
-                      prefixIcon: const Icon(Icons.password),
-                      suffixIcon: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            right: 30,
-                            child: Obx(
-                              () => IconButton(
-                                icon: Icon(
-                                  box.value.read("userPass").toString() ==
-                                          controller.inputPass.text
-                                      ? Icons.check
-                                      // : _InputPass.text != ""
-                                      //     ? Icons.close
-                                      : null,
-                                ),
-                                onPressed: () {},
+                    maxLength: 8,
+                    hintText: "Password",
+                    labelText: "Password",
+                    prefixIcon: const Icon(Icons.password),
+                    prefixIconColor: appcolors.mainColor,
+                    suffixIcon: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          right: 30,
+                          child: Obx(
+                            () => IconButton(
+                              icon: Icon(
+                                box.value.read("userPass").toString() ==
+                                        controller.inputPass.value.text
+                                    ? Icons.check
+                                    // : _InputPass.text != ""
+                                    //     ? Icons.close
+                                    : null,
                               ),
+                              onPressed: () {},
                             ),
                           ),
-                          IconButton(
-                            icon: Icon(controller.passwordVisible.value
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () {
-                              controller.passwordVisible.value =
-                                  !controller.passwordVisible.value;
-                            },
-                          ),
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          icon: Icon(controller.passwordVisible.value
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            controller.passwordVisible.value =
+                                !controller.passwordVisible.value;
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),

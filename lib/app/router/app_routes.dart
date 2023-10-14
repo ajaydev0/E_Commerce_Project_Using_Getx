@@ -11,6 +11,7 @@ abstract class Routes {
   static const cartScreen = _Path.cartScreen;
   static const favoriteScreen = _Path.favoriteScreen;
   static const profileScreen = _Path.profileScreen;
+  static const MY_APP = '/my-app';
 }
 
 class _Path {
@@ -19,7 +20,6 @@ class _Path {
   static const splashScreen = "/";
   //Device
   // static const splashScreen = "/splash_Screen";
-
   static const navScreen = "/nav_screen";
   static const signInScreen = "/sign_in_screen";
   static const signUpScreen = "/sign_up_screen";

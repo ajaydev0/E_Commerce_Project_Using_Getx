@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+
+import '../modules/MyApp/bindings/my_app_binding.dart';
+import '../modules/MyApp/views/my_app_view.dart';
 import '../modules/auth/sign_in/bindings/sign_in_binding.dart';
 import '../modules/auth/sign_in/views/sign_in_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
@@ -17,6 +20,7 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/splash_screen/bindings/splash_binding.dart';
 import '../modules/splash_screen/views/splash_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -69,6 +73,11 @@ class AppPages {
       name: _Path.profileScreen,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.MY_APP,
+      page: () => const MyAppView(),
+      binding: MyAppBinding(),
     ),
   ];
 }

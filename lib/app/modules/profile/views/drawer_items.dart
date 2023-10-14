@@ -1,14 +1,20 @@
 // ignore_for_file: avoid_print
+
+import 'package:demo/app/modules/MyApp/controllers/my_app_controller.dart';
+import 'package:demo/main.dart';
 import 'package:demo/utils/Ui_Content.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../Widgets/Text_Widget.dart';
 import '../../../router/app_pages.dart';
 import '../controller/profile_controller.dart';
 
-Drawer drawerBody(ProfileController controller, BuildContext context) {
-  var controller = Get.put(ProfileController());
+Drawer drawerBody(
+  ProfileController controller,
+  BuildContext context,
+) {
   return Drawer(
     // width: Kw(value: 70, context: context),
     child: Column(
@@ -105,7 +111,8 @@ Drawer drawerBody(ProfileController controller, BuildContext context) {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.changeThemeMode(ThemeMode.light);
+                              Get.find<MyAppController>().lightMode();
+                              // Get.changeThemeMode(ThemeMode.light);
                               // Get.changeTheme(ThemeData.light());
 
                               print("LightMode");
@@ -132,7 +139,9 @@ Drawer drawerBody(ProfileController controller, BuildContext context) {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.changeThemeMode(ThemeMode.dark);
+                              Get.find<MyAppController>().darkMode();
+                              // controller.theme.value = false;
+                              // Get.changeThemeMode(ThemeMode.dark);
                               // box.value.write("themeData", ThemeData());
                               // Get.changeTheme(ThemeData.dark());
 

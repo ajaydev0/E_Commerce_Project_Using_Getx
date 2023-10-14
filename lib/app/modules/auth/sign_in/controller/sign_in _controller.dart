@@ -13,6 +13,9 @@ class SignInController extends GetxController {
     if (value == null || value.trim().isEmpty) {
       return " Required";
     }
+    if (!value.trim().contains("@") && !value.trim().contains(".")) {
+      return "Email is not valid";
+    }
     // if (!value.trim().contains("@gmail.com")) {
     //   return "Enter valid email";
     // }

@@ -1,54 +1,45 @@
-// // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, file_names
+// ignore_for_file: file_names
 
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 
-import '../app/modules/auth/sign_up/controller/sign_up_controller.dart';
-
 class KtextFeild extends StatelessWidget {
-  KtextFeild({
+  const KtextFeild({
     super.key,
-    required this.controller,
     required this.hintText,
     required this.labelText,
-    // this.obscureText,
+    this.obscureText = false,
     this.prefixIcon,
     this.prefixIconColor,
     this.maxLength,
     this.suffixIcon,
     this.validator,
-    this.textEditingcontroller,
+    required this.controller,
+    this.counterText,
   });
-
-  final SignUpController controller;
   final String hintText;
   final String labelText;
-  // bool? obscureText;
+  final bool obscureText;
   final Widget? prefixIcon;
   final Color? prefixIconColor;
   final int? maxLength;
+  final String? counterText;
   final Widget? suffixIcon;
-  final TextEditingController? textEditingcontroller;
-  // final Function()? validator;
-  String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // obscureText: obscureText,
-
-      // validator: (value){
-      //   validator
-      // },
-      // validator: (value) {
-      //   return controller.validateEmail(value);
-      // },
+      obscureText: obscureText,
+      validator: validator,
       maxLength: maxLength,
-      controller: textEditingcontroller,
+      controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         prefixIconColor: prefixIconColor,
         hintText: hintText,
+        counterText: counterText,
         labelText: labelText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,

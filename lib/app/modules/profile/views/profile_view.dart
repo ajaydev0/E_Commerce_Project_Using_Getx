@@ -1,3 +1,4 @@
+import 'package:demo/main.dart';
 import 'package:demo/utils/Ui_Content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import '../../../../Widgets/AppSize_MediaQuery.dart';
 import '../../../../Widgets/Container_Widget.dart';
 import '../../../../Widgets/Scaffold_Widget.dart';
 import '../../../../Widgets/Text_Widget.dart';
+import '../../MyApp/controllers/my_app_controller.dart';
 import '../controller/profile_controller.dart';
 import 'drawer_items.dart';
 
@@ -14,12 +16,16 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+    var MyAppController() = Get.find();
 
     return KScaffold(
       key: controller.globalKey,
       endDrawer: SafeArea(
         bottom: false,
-        child: drawerBody(controller, context),
+        child: drawerBody(
+          controller,
+          context,
+        ),
       ),
       extendBody: true,
       body: Column(
