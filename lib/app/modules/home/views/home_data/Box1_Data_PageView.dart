@@ -1,7 +1,5 @@
 // ignore_for_file: file_names, non_constant_identifier_names, camel_case_types
-
-//
-
+import 'package:get/get.dart';
 import '../Products_Details/Product1_Details.dart';
 import '../Products_Details/Product2_Details.dart';
 import '../Products_Details/Product3_Details .dart';
@@ -22,7 +20,7 @@ class Product {
 }
 
 //Product data
-List<Product> products = [
+RxList<Product> products = [
   Product(
     01,
     750,
@@ -47,7 +45,7 @@ List<Product> products = [
     "Nike 300",
     "https://images.pexels.com/photos/10134303/pexels-photo-10134303.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
   ),
-];
+].obs;
 
 // //
 
@@ -66,7 +64,7 @@ class HomeData {
 }
 
 class ProductsList {
-  List<HomeData> itemData = [
+  RxList<HomeData> itemData = [
     HomeData(
       01,
       750,
@@ -91,7 +89,7 @@ class ProductsList {
       "Nike 300",
       "https://images.pexels.com/photos/10134303/pexels-photo-10134303.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     ),
-  ];
+  ].obs;
 }
 
 // //

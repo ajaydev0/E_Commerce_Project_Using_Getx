@@ -7,11 +7,10 @@ abstract class Routes {
   static const signInScreen = _Path.signInScreen;
   static const signUpScreen = _Path.signUpScreen;
   static const homeScreen = _Path.homeScreen;
-  static const discoverScreen = _Path.discoverScreen;
   static const cartScreen = _Path.cartScreen;
   static const favoriteScreen = _Path.favoriteScreen;
   static const profileScreen = _Path.profileScreen;
-  static const MY_APP = '/my-app';
+  static const myApp = _Path.myApp;
 }
 
 class _Path {
@@ -24,8 +23,8 @@ class _Path {
   static const signInScreen = "/sign_in_screen";
   static const signUpScreen = "/sign_up_screen";
   static const homeScreen = "/home_screen";
-  static const discoverScreen = "/discover_screen";
   static const cartScreen = "/cart_screen";
   static const favoriteScreen = "/favorite_screen";
   static const profileScreen = "/profile_screen";
+  static const myApp = '/my-app';
 }

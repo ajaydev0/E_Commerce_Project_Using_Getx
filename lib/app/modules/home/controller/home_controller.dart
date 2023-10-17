@@ -39,18 +39,23 @@ class HomeController extends GetxController {
     cartItems.add(CartItem(product, 1.obs));
   }
 
-  int selectedIndex = 0;
+  RxInt selectedIndex = 0.obs;
 
   late PageController pageController;
   @override
   void onInit() {
     pageController =
-        PageController(initialPage: selectedIndex, viewportFraction: .9);
+        PageController(initialPage: selectedIndex.value, viewportFraction: .9);
     super.onInit();
   }
 
+  changePage(int value) {
+    selectedIndex.value = value;
+    products.refresh();
+  }
+
   kscale(int index) {
-    if (selectedIndex == index) {
+    if (selectedIndex.value == index) {
       return 1.0;
     } else {
       return 0.8;

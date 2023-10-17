@@ -15,6 +15,14 @@ class SignUpController extends GetxController {
       TextEditingController().obs;
   final Rx<TextEditingController> userPasswordController =
       TextEditingController().obs;
+  //Dispose
+  @override
+  void onClose() {
+    userNameController.value.dispose();
+    userEmailController.value.dispose();
+    userPasswordController.value.dispose();
+    super.onClose();
+  }
 
   // Validation Name  TextFormFeild
   validateName(value) {

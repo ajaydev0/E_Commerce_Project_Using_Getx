@@ -77,4 +77,11 @@ class SignInController extends GetxController {
   RxBool passwordVisible = true.obs;
   final TextEditingController inputEmail = TextEditingController();
   final TextEditingController inputPass = TextEditingController();
+
+  @override
+  void onClose() {
+    inputEmail.dispose();
+    inputPass.dispose();
+    super.onClose();
+  }
 }

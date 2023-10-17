@@ -1,14 +1,11 @@
-// ignore_for_file: avoid_print
-
 import 'package:get/get.dart';
-
 import '../views/cart_data/Data_Cart.dart';
 
 class CartController extends GetxController {
   //remove cart item quantity
   void removeFromCart(CartItem item) {
-    if (item.quantity > 1) {
-      (item.quantity--);
+    if (item.quantity.value > 1) {
+      (item.quantity.value--);
     } else {
       print("Removed item");
 

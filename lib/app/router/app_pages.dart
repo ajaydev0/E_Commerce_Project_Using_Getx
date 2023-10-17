@@ -8,8 +8,6 @@ import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
 import '../modules/auth/sign_up/views/sign_up_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
-import '../modules/discover/bindings/discover_binding.dart';
-import '../modules/discover/views/discover_view.dart';
 import '../modules/favorite/bindings/favorite_binding.dart';
 import '../modules/favorite/views/favorite_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -54,11 +52,7 @@ class AppPages {
       page: () => const HomeView(),
       binding: HomeBinding(),
     ),
-    GetPage(
-      name: _Path.discoverScreen,
-      page: () => const DiscoverView(),
-      binding: DiscoverBinding(),
-    ),
+
     GetPage(
       name: _Path.cartScreen,
       page: () => const CartView(),
@@ -75,7 +69,7 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: Routes.MY_APP,
+      name: Routes.myApp,
       page: () => const MyAppView(),
       binding: MyAppBinding(),
     ),

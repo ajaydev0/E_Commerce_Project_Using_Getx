@@ -21,7 +21,8 @@ class NavView extends GetView<NavController> {
           child: Obx(
             () => BottomNavigationBar(
               //  height: 65,
-              selectedLabelStyle: TextStyle(fontSize: 11, color: Colors.black),
+              selectedLabelStyle:
+                  const TextStyle(fontSize: 11, color: Colors.blue),
               selectedIconTheme: IconThemeData(color: appcolors.blue400),
               unselectedLabelStyle: TextStyle(
                 color: appcolors.grey600,
@@ -31,7 +32,6 @@ class NavView extends GetView<NavController> {
                 controller.ontap(index);
               },
 
-              // backgroundColor: Colors.white,
               type: BottomNavigationBarType.fixed,
               currentIndex: controller.selectIndex.value,
               items: [
@@ -46,14 +46,6 @@ class NavView extends GetView<NavController> {
                 BottomNavigationBarItem(
                   icon: Icon(
                     controller.selectIndex.value == 1
-                        ? Icons.shopping_bag
-                        : Icons.shopping_bag_outlined,
-                  ),
-                  label: 'Discover',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    controller.selectIndex.value == 2
                         ? Icons.shopping_cart
                         : Icons.shopping_cart_outlined,
                   ),
@@ -61,7 +53,7 @@ class NavView extends GetView<NavController> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    controller.selectIndex.value == 3
+                    controller.selectIndex.value == 2
                         ? Icons.favorite
                         : Icons.favorite_border,
                   ),
@@ -69,7 +61,7 @@ class NavView extends GetView<NavController> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    controller.selectIndex.value == 4
+                    controller.selectIndex.value == 3
                         ? Icons.person
                         : Icons.person_outlined,
                   ),

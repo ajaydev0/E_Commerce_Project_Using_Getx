@@ -7,11 +7,11 @@ class MyAppController extends GetxController {
   RxBool theme = false.obs;
   @override
   void onInit() {
-    cheakTheme();
+    checkTheme();
     super.onInit();
   }
 
-  cheakTheme() async {
+  checkTheme() async {
     theme.value = await LocalData().getThemeData();
     Get.changeThemeMode(theme.value ? ThemeMode.light : ThemeMode.dark);
   }
@@ -30,6 +30,7 @@ class MyAppController extends GetxController {
 
   systemMode() {
     Get.changeThemeMode(ThemeMode.system);
+    // Get.changeThemeMode( ThemeMode.system = darkMode() ?  theme.value = false : theme.value = true );
     // theme.value =! theme.value;
     // print(theme.value);
     // LocalData().setThemeData(theme.value);
